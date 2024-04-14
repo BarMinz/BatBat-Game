@@ -134,6 +134,7 @@ jobs:
            cosign sign --key cosign.key barminz/batbat:${{ env.VERSION }} -y
            cosign sign --key cosign.key barminz/batbat:${{ env.VERSION }} -y
 
+
 #  deploy:
 #    needs: build
 #    runs-on: ubuntu-latest
