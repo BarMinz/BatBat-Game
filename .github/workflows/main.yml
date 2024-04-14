@@ -118,12 +118,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-        - name: Login to Docker Hub
-          uses: docker/login-action@v3
-          with:
-            username: ${{ secrets.DOCKER_HUB_USER }}
-            password: ${{ secrets.DOCKER_HUB_TOKEN }}
-          
         - name: Install Cosign
           uses: sigstore/cosign-installer@v3.5.0
           
@@ -137,8 +131,8 @@ jobs:
           env:
             COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
           run: |
-           cosign sign --key cosign.key $barminz/batbat:${{ env.VERSION }} -y
-           cosign sign --key cosign.key $barminz/batbat:${{ env.VERSION }} -y
+           cosign sign --key cosign.key barminz/batbat:${{ env.VERSION }} -y
+           cosign sign --key cosign.key barminz/batbat:${{ env.VERSION }} -y
 
 #  deploy:
 #    needs: build
