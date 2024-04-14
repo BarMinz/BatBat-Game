@@ -25,18 +25,11 @@ jobs:
           args: >
             --failOnCVSS 7
             --enableRetired
-
-      - run: ls reports
       
       - name: Upload SARIF results file
         uses: github/codeql-action/upload-sarif@main
         with:
           sarif_file: reports/dependency-check-report.sarif
-#      - name: Upload Test results
-#        uses: actions/upload-artifact@master
-#        with:
-#           name: Depcheck report
-#           path: ${{github.workspace}}/reports
 
 
   docker-scan:
