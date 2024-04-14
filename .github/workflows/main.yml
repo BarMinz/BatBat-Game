@@ -3,10 +3,10 @@ name: Github Actions
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    types:
-      - closed
-    branches: [ "master" ]
+#  pull_request:
+#    types:
+#      - closed
+#    branches: [ "master" ]
 
 jobs:
   scan:
@@ -57,6 +57,7 @@ jobs:
 
   static-code-analysis:
     name: Codacy Analysis CLI
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
