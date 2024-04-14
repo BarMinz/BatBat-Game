@@ -122,7 +122,7 @@ jobs:
           uses: sigstore/cosign-installer@v3.5.0
           
         - name: Write signing key to disk
-          run: 'echo "$KEY" > cosign.key'
+          run: 'echo "$COSIGN_PUBLIC_KEY" > cosign.key'
           shell: bash
           env:
             KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
