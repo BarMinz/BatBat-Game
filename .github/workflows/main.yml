@@ -9,7 +9,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  scan:
+  dependancy-scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -82,7 +82,7 @@ jobs:
         
   build:
     runs-on: ubuntu-latest
-    needs: [scan, docker-scan, static-code-analysis]
+    needs: [dependancy-scan, docker-scan, static-code-analysis]
 
     steps:
       - name: Checkout Repo
@@ -145,7 +145,7 @@ jobs:
           run: |
            cosign sign --key cosign.key barminz/batbat:${{ env.VERSION }} -y
            cosign sign --key cosign.key barminz/batbat:latest -y
-  verify:
+  verify-image:
     runs-on: ubuntu-latest
     needs: sign-image
     steps:
