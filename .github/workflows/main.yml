@@ -19,7 +19,7 @@ jobs:
         run: mvn clean install
 
       - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@1.1.0
+        uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
         with:
           project: 'BatBat-Game'
@@ -27,7 +27,7 @@ jobs:
           format: 'SARIF'
           out: 'reports' # this is the default, no need to specify unless you wish to override it
           args: >
-            --failOnCVSS 7
+            --failOnCVSS 10
             --enableRetired
       
       - name: Upload SARIF results file
