@@ -3,10 +3,10 @@ name: Github Actions
 on:
   push:
     branches: [ "master" ]
-#  pull_request:
-#    types:
-#      - closed
-#    branches: [ "master" ]
+  pull_request:
+    types:
+      - closed
+    branches: [ "master" ]
 
 jobs:
   scan:
@@ -139,6 +139,7 @@ jobs:
           run: |
            cosign sign --key cosign.key barminz/batbat:${{ env.VERSION }} -y
            cosign sign --key cosign.key barminz/batbat:latest -y
+           
 
 #  deploy:
 #    needs: build
