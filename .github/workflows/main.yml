@@ -166,8 +166,8 @@ jobs:
     
       - name: Verify Image
         run: |
-          cosign verify --key cosign.key barminz/batbat:${{ env.VERSION }} -y
-          cosign verify --key cosign.key barminz/batbat:latest -y
+          cosign verify --key cosign.key barminz/batbat:${{ env.VERSION }}
+          cosign verify --key cosign.key barminz/batbat:latest
            
 
 #  deploy:
